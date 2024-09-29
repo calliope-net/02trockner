@@ -13,6 +13,7 @@ let Lichtschranke = 0
 let Schaltwert = 0
 _("Erweiterung Grove laden")
 let o4digit = grove.createDisplay(DigitalPin.C16, DigitalPin.C17)
+pins.digitalWritePin(DigitalPin.P0, 1)
 Schaltwert = 60
 basic.showLeds(`
     . # . # .
