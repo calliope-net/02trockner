@@ -6,13 +6,7 @@ input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
     Schaltwert += 5
     basic.showNumber(Schaltwert)
 })
-function _ (Kommentar: string) {
-	
-}
-let Lichtschranke = 0
 let Schaltwert = 0
-_("Erweiterung Grove laden")
-let o4digit = grove.createDisplay(DigitalPin.C16, DigitalPin.C17)
 pins.digitalWritePin(DigitalPin.P0, 1)
 Schaltwert = 60
 basic.showLeds(`
@@ -23,13 +17,11 @@ basic.showLeds(`
     # . . . #
     `)
 loops.everyInterval(500, function () {
-    Lichtschranke = pins.analogReadPin(AnalogPin.P2)
-    o4digit.show(Lichtschranke)
-    if (Lichtschranke < Schaltwert) {
+    if (pins.analogReadPin(AnalogReadWritePin.P2) < Schaltwert) {
         basic.setLedColor(0xff0000)
         motors.motorPower(0)
     } else {
-        basic.setLedColor(0xff0000)
+        basic.setLedColor(0x00ff00)
         motors.motorPower(95)
     }
 })
